@@ -107,6 +107,7 @@ Os personagens `claude` (Contos com Claude) e `macks` (Narração) usam clone. P
 | [Vila Acesa](estilos/vila-acesa/) | cidade em corte, ajudante luminoso em cada cômodo | 16:9, 1:1, 9:16 | Canvas 2D |
 | [Rabisco](estilos/rabisco/) | caneta e giz de cera, narrador em primeira pessoa | 9:16, 1:1, 16:9 | Canvas 2D |
 | [Fantasia](estilos/fantasia/) | lenda em vetor chapado, névoa, paralaxe | 9:16, 1:1, 16:9 | Canvas 2D |
+| [Recorte](estilos/recorte/) | papel recortado nas cores do Claude, por cima de uma narração pronta | 16:9 | Canvas 2D |
 | [Aula](estilos/aula/) | abertura de aula sem rosto, tipografia cinética e voz clonada | 16:9 | Canvas 2D |
 | [Excel Desenhado](estilos/excel-desenhado/) | planilha desenhada à mão, cursor que clica e digita | 16:9 | Canvas 2D |
 | [Higgsfield](estilos/higgsfield/) | pinturas da Higgsfield animadas em código | 16:9 | Canvas 2D / Blender |
