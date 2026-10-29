@@ -1,0 +1,62 @@
+[
+ {
+  "t": 0.3,
+  "tipo": "subida"
+ },
+ {
+  "t": 0.9,
+  "tipo": "estalo"
+ },
+ {
+  "t": 4.682,
+  "tipo": "chicote"
+ },
+ {
+  "t": 7.468,
+  "tipo": "estalo"
+ },
+ {
+  "t": 9.361,
+  "tipo": "chicote"
+ },
+ {
+  "t": 10.361,
+  "tipo": "estalo"
+ },
+ {
+  "t": 11.061,
+  "tipo": "estalo"
+ },
+ {
+  "t": 16.312,
+  "tipo": "chicote"
+ },
+ {
+  "t": 17.212,
+  "tipo": "tique"
+ },
+ {
+  "t": 17.912,
+  "tipo": "tique"
+ },
+ {
+  "t": 18.612,
+  "tipo": "tique"
+ },
+ {
+  "t": 19.311999999999998,
+  "tipo": "tique"
+ },
+ {
+  "t": 20.325,
+  "tipo": "chicote"
+ },
+ {
+  "t": 20.625,
+  "tipo": "subida"
+ },
+ {
+  "t": 21.224999999999998,
+  "tipo": "estalo"
+ }
+]

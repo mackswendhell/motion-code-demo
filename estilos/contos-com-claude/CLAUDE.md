@@ -16,6 +16,7 @@ Atualizar esta tabela sempre que um episódio mudar de etapa.
 | `002-troca-pro-haiku-v2` | **entregue** (versão final, 19/10/2026) | nenhum |
 | `003-so-mais-uma-funcao` | renderizado (51,2 s, refaz o piloto 000) | aprovação 3 (vídeo) |
 | `004-testei-o-codex` | renderizado e entregue (37,0 s, primeiro com trilha, voz em −14 LUFS) | aprovação 3 (vídeo) |
+| `005-so-um-resuminho` | renderizado e entregue (20,9 s; Claude na voz Myra: rodar sempre com `--troca claude=claude-myra`; Blender precisa de GPU, fora do sandbox) | aprovação 3 (vídeo) |
 
 ## Como um pedido vira vídeo
 

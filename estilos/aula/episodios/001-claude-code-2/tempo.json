@@ -1,0 +1,116 @@
+{
+ "fps": 24,
+ "formato": "16:9",
+ "atos": [
+  {
+   "cena": "titulo",
+   "entrada": null,
+   "t0": 0.0,
+   "t1": 4.682,
+   "fala": {
+    "t0": 0.4,
+    "t1": 3.982,
+    "texto": "Ó só... o Claude Code 2.0 chegou com cara nova."
+   },
+   "tela": {
+    "selo": "AULA 01",
+    "texto": "Claude Code 2.0",
+    "destaque": "2.0",
+    "sub": "o que mudou no app"
+   }
+  },
+  {
+   "cena": "frase",
+   "entrada": null,
+   "t0": 4.682,
+   "t1": 9.361,
+   "fala": {
+    "t0": 5.082,
+    "t1": 8.661,
+    "texto": "O visual mudou, e junto mudou o jeito de organizar o trabalho."
+   },
+   "tela": {
+    "texto": "Mudou o jeito de organizar o trabalho",
+    "destaque": [
+     "organizar"
+    ]
+   }
+  },
+  {
+   "cena": "janela",
+   "entrada": null,
+   "t0": 9.361,
+   "t1": 16.312,
+   "fala": {
+    "t0": 9.761,
+    "t1": 15.612,
+    "texto": "Na lateral ficam os projetos e as threads. E do lado do chat, cartões de ambiente e de contexto."
+   },
+   "tela": {
+    "titulo": "Claude Code",
+    "lateral": [
+     "Projetos",
+     "  Roteiros",
+     "  Thumbnails",
+     "  Edição",
+     "Threads"
+    ],
+    "ativo": "Roteiros",
+    "chat": [
+     "Resume o relatório do cliente",
+     "Pronto. Os três pontos principais estão abaixo."
+    ],
+    "cartoes": [
+     {
+      "titulo": "Ambiente",
+      "texto": "~/projetos/canal · local"
+     },
+     {
+      "titulo": "Contexto",
+      "texto": "42% da janela usada",
+      "barra": 0.42
+     }
+    ],
+    "foco": "cartoes",
+    "focoEm": 2.6
+   }
+  },
+  {
+   "cena": "lista",
+   "entrada": null,
+   "t0": 16.312,
+   "t1": 20.325,
+   "fala": {
+    "t0": 16.712,
+    "t1": 19.625,
+    "texto": "Projetos, threads, cartões e tela dividida."
+   },
+   "tela": {
+    "titulo": "Novidades",
+    "itens": [
+     "Projetos",
+     "Threads",
+     "Cartões de ambiente e contexto",
+     "Tela dividida"
+    ],
+    "passo": 0.7
+   }
+  },
+  {
+   "cena": "fim",
+   "entrada": "flash",
+   "t0": 20.325,
+   "t1": 23.325,
+   "fala": {
+    "t0": 20.625,
+    "t1": 21.684,
+    "texto": "Bora ver uma por uma."
+   },
+   "tela": {
+    "texto": "Bora ver uma por uma",
+    "destaque": "uma por uma"
+   }
+  }
+ ],
+ "total": 23.325
+}

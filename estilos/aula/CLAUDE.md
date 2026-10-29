@@ -30,3 +30,4 @@ Em qualquer cena: `zoom` (quanto a câmera empurra ao longo do ato, padrão 1,05
 | Episódio | Etapa | Próximo passo |
 |---|---|---|
 | `000-teste` | teste do motor (29/10/2026): as seis cenas, 17 s, 16:9 | nenhum (só teste) |
+| `001-claude-code-2` | entregue em 16:9 (29/10/2026): abertura sobre o Claude Code 2.0, 23,4 s, voz `eu` | o Macks ver e aprovar |

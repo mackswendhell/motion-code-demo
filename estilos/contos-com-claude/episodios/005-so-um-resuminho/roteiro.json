@@ -1,0 +1,94 @@
+{
+  "titulo": "Só um resuminho",
+  "estilo": "contos-com-claude",
+  "formato": "9:16",
+  "modo_claude": "problema",
+  "dor": "pedir um resumo de um documento enorme e ficar sem graça com o tamanho",
+  "cenario": "quarto-noite",
+  "falas": [
+    {
+      "quem": "usuario",
+      "texto": "Claude...",
+      "direcao": "ênfase forte no Claau, arrasta a vogal, cansado mas tranquilo",
+      "plano": "aberto",
+      "pausa_depois": 0.4,
+      "acoes": {"usuario": "digita"},
+      "duracao": 1.0,
+      "voz_texto": "Claauude..."
+    },
+    {
+      "quem": "usuario",
+      "texto": "Me faz só um resuminho desse contrato?",
+      "direcao": "sem graça, pedindo favor, cansado",
+      "plano": "close_usuario",
+      "acoes": {"usuario": "digita"},
+      "sons": [{"som": "envio", "em": "fim"}]
+    },
+    {
+      "quem": "claude",
+      "texto": "Quantas páginas?",
+      "direcao": "leve, sobe no fim, desconfiada",
+      "plano": "close_claude",
+      "pausa_antes": 0.5,
+      "acoes": {"claude": "desconfia"}
+    },
+    {
+      "quem": "usuario",
+      "texto": "...Oitenta.",
+      "direcao": "sem graça, baixinho, encolhido",
+      "plano": "close_usuario",
+      "pausa_antes": 0.5,
+      "acoes": {"usuario": "mao_no_rosto"}
+    },
+    {
+      "quem": "claude",
+      "texto": "Oitenta... páginas.",
+      "voz_texto": "(suspiro) Aaaaah... Oitenta... páginas.",
+      "direcao": "teatral, sofrida, suspiro longo e exagerado antes de falar",
+      "plano": "claude_baixo",
+      "movimento": "aproxima",
+      "luz": "quente",
+      "acoes": {"claude": "suspira"}
+    },
+    {
+      "quem": "usuario",
+      "texto": "Desculpa...",
+      "direcao": "sem graça, voz caindo",
+      "plano": "close_usuario",
+      "pausa_antes": 0.5,
+      "acoes": {"usuario": "desanima"}
+    },
+    {
+      "quem": "claude",
+      "texto": "Pronto.",
+      "direcao": "rápida, seca, eficiente",
+      "plano": "close_claude",
+      "acoes": {"claude": "pulinho"},
+      "sons": [{"som": "resposta", "em": 0}],
+      "balao": {
+        "texto": "Você paga 12 meses. Sair antes dá multa. Renova sozinho.",
+        "de": "claude",
+        "em": 0.2,
+        "dura": 2.6
+      }
+    },
+    {
+      "quem": "usuario",
+      "texto": "Só isso?",
+      "direcao": "incrédulo, voz sobe",
+      "plano": "extremo_usuario",
+      "pausa_antes": 0.5
+    },
+    {
+      "quem": "claude",
+      "texto": "Setenta e nove páginas de juridiquês.",
+      "direcao": "seca, precisa, termina caindo",
+      "plano": "claude_camera",
+      "pausa_antes": 2.2,
+      "movimento": "parado",
+      "luz": "quente",
+      "acoes": {"claude": "pisca_lento"}
+    }
+  ],
+  "final": {"segura": 1.2, "corte_preto": true}
+}

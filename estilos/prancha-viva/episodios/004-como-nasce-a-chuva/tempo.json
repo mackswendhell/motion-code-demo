@@ -1,0 +1,62 @@
+{
+ "fps": 24,
+ "formato": "16:9",
+ "atos": [
+  {
+   "cena": "mar",
+   "entrada": null,
+   "t0": 0.0,
+   "t1": 3.5,
+   "fala": {
+    "t0": 0.4,
+    "t1": 2.271,
+    "texto": "Sabia que a chuva começa no mar?"
+   }
+  },
+  {
+   "cena": "vapor",
+   "entrada": "continua",
+   "t0": 3.5,
+   "t1": 8.822,
+   "fala": {
+    "t0": 3.9,
+    "t1": 8.122,
+    "texto": "O sol esquenta a água... e ela sobe pelo ar, leve, invisível."
+   }
+  },
+  {
+   "cena": "nuvem",
+   "entrada": "continua",
+   "t0": 8.822,
+   "t1": 14.589,
+   "fala": {
+    "t0": 9.222,
+    "t1": 13.889,
+    "texto": "Lá em cima faz frio. O vapor vira gotinhas... e as gotinhas viram nuvem."
+   }
+  },
+  {
+   "cena": "peso",
+   "entrada": "mergulha",
+   "t0": 14.589,
+   "t1": 19.063,
+   "fala": {
+    "t0": 14.889,
+    "t1": 18.363,
+    "texto": "Elas se juntam, crescem, ficam pesadas... pesadas..."
+   }
+  },
+  {
+   "cena": "chuva",
+   "entrada": "emerge",
+   "t0": 19.063,
+   "t1": 23.563,
+   "fala": {
+    "t0": 19.963,
+    "t1": 22.695,
+    "texto": "E de repente... caem todas. É chuva!"
+   }
+  }
+ ],
+ "total": 23.563
+}

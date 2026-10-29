@@ -10,6 +10,7 @@ Sem skill ainda: o fluxo de roteiro (atos, narração, passagens) vive neste arq
 |---|---|---|
 | `001-ciclo-da-abelha` | **entregue e aprovado** (20/10/2026, 16:9, 13 atos, 62,8 s, em `prontos/prancha-viva/`) | nenhum; depois dele, criar a skill do estilo |
 | `003-o-que-maria-guardava` | **entregue, aguardando o Macks ver** (23/10/2026, 16:9, 15 cenas, 6min03s, em `prontos/prancha-viva/`). Lucas 1–2 recontado do 002 (que tinha 19min42s de quadros parados). Motor próprio na pasta do episódio (`cena.js`, `personagens.js`, `cenas.js`, `falas.py` para o elenco de 4 vozes, `fazer.sh`), sem tocar em `motor/` nem no núcleo | ouvir as vozes novas (Maria, Isabel, Gabriel) e o "Mas Zacarias" do ato 2 |
+| `004-como-nasce-a-chuva` | **entregue, aguardando o Macks ver** (29/10/2026, 16:9, 5 atos, 23,6 s, em `prontos/prancha-viva/`). Ciclo da água para crianças; suspense no "pesadas... pesadas..." e revelação no "É chuva!". Motor próprio na pasta do episódio (`cena.js`: mar, vapor, nuvem e chuva são um mundo só; `peso` é o close dentro da nuvem) e `fazer.sh` do episódio | ouvir se a direção deu o suspense e o brilho no fim |
 
 ## Motor
 

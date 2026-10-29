@@ -48,6 +48,14 @@
    "voz": "899f44b5e8a14eb7b315cd50340f792b",
    "direcao_base": "voz feminina antiga e serena, quase um sussurro, como uma rainha élfica contando uma lenda; sotaque brasileiro, pronúncia do Brasil, nunca de Portugal",
    "nota": "Fish 'Galadriel' (galadriel3), escolhida para a amostra do estilo Fantasia; candidatas em estilos/fantasia/vozes-candidatas/"
+  },
+  "eu": {
+   "nome": "Eu (Macks, amostra minha-voz.wav)",
+   "clone": "referencias/eu.wav",
+   "clone_texto": "referencias/eu.txt",
+   "voz_origem": "voz do Macks: primeiros 47 s do vídeo do OpenClaw (a amostra aprovada no Motion Code), clonagem instantânea no Fish",
+   "direcao_base": "voz grave e assentada, convicto",
+   "aprovada": "29/10/2026, teste de frase (direção base e animado)"
   }
  },
  "alternativas": {
@@ -66,6 +74,13 @@
    "voz_origem": "voz do Macks clonada no Fish",
    "voz_teste": "Eddy (Português (Brasil))",
    "direcao_base": "jovem, cansado de madrugada, mas com vida e um pouco de energia na voz"
+  },
+  "claude-myra": {
+   "nome": "Claude (Myra)",
+   "voz": "85a38b8e90444d358329dd156d650a4b",
+   "voz_origem": "Fish: Myra (escolhida para o 005 em 29/10/2026, sem o clone da River; alternativas: Beatriz 0e26d2df0d0848e3b34099bfb55fd6ea, Narrador de Historias e Ciências 0ba1afd27db44eb2b4cb27fd331b93aa)",
+   "voz_teste": "Reed (Português (Brasil))",
+   "direcao_base": "serena, dicção precisa, melódica, conclusiva"
   }
  }
 }

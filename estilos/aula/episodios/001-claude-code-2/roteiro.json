@@ -1,0 +1,90 @@
+{
+ "titulo": "Claude Code 2.0",
+ "estilo": "aula",
+ "formato": "16:9",
+ "fps": 24,
+ "voz": "eu",
+ "tema": "abertura de aula sobre as novidades do Claude Code 2.0",
+ "atos": [
+  {
+   "cena": "titulo",
+   "dura": 3.5,
+   "narracao": {
+    "texto": "Ó só... o Claude Code 2.0 chegou com cara nova.",
+    "direcao": "começa em tom de segredo, quase sussurrando no 'Ó só...', pausa, e explode em empolgação de professor animado no resto, sorriso na voz, sotaque brasileiro",
+    "em": 0.4
+   },
+   "tela": {
+    "selo": "AULA 01",
+    "texto": "Claude Code 2.0",
+    "destaque": "2.0",
+    "sub": "o que mudou no app"
+   }
+  },
+  {
+   "cena": "frase",
+   "dura": 3.5,
+   "narracao": {
+    "texto": "O visual mudou, e junto mudou o jeito de organizar o trabalho.",
+    "direcao": "empolgado mas explicando, desacelera e dá ênfase em organizar, sotaque brasileiro",
+    "em": 0.4
+   },
+   "tela": {
+    "texto": "Mudou o jeito de organizar o trabalho",
+    "destaque": ["organizar"]
+   }
+  },
+  {
+   "cena": "janela",
+   "dura": 5,
+   "narracao": {
+    "texto": "Na lateral ficam os projetos e as threads. E do lado do chat, cartões de ambiente e de contexto.",
+    "direcao": "didático, como quem aponta cada parte da tela, ritmo médio, pequena pausa antes de cartões, sotaque brasileiro",
+    "em": 0.4
+   },
+   "tela": {
+    "titulo": "Claude Code",
+    "lateral": ["Projetos", "  Roteiros", "  Thumbnails", "  Edição", "Threads"],
+    "ativo": "Roteiros",
+    "chat": [
+     "Resume o relatório do cliente",
+     "Pronto. Os três pontos principais estão abaixo."
+    ],
+    "cartoes": [
+     {"titulo": "Ambiente", "texto": "~/projetos/canal · local"},
+     {"titulo": "Contexto", "texto": "42% da janela usada", "barra": 0.42}
+    ],
+    "foco": "cartoes",
+    "focoEm": 2.6
+   }
+  },
+  {
+   "cena": "lista",
+   "dura": 4,
+   "narracao": {
+    "texto": "Projetos, threads, cartões e tela dividida.",
+    "direcao": "contando nos dedos, pausa curta entre cada item, sobe a energia no último, sotaque brasileiro",
+    "em": 0.4
+   },
+   "tela": {
+    "titulo": "Novidades",
+    "itens": ["Projetos", "Threads", "Cartões de ambiente e contexto", "Tela dividida"],
+    "passo": 0.7
+   }
+  },
+  {
+   "cena": "fim",
+   "dura": 3,
+   "entrada": "flash",
+   "narracao": {
+    "texto": "Bora ver uma por uma.",
+    "direcao": "convite animado, sorrindo, fecha pra cima, sotaque brasileiro",
+    "em": 0.3
+   },
+   "tela": {
+    "texto": "Bora ver uma por uma",
+    "destaque": "uma por uma"
+   }
+  }
+ ]
+}

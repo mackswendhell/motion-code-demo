@@ -1,0 +1,63 @@
+{
+  "titulo": "Como nasce a chuva",
+  "estilo": "prancha-viva",
+  "formato": "16:9",
+  "fps": 24,
+  "tema": "o ciclo da água explicado para crianças: o mar vira vapor, o vapor vira nuvem, a nuvem vira chuva, e a chuva volta ao mar",
+  "atos": [
+    {
+      "cena": "mar",
+      "dura": 3.5,
+      "visual": "mar azul-turquesa em aguada, ondas hachuradas, sol grande e quente no alto; câmera parada",
+      "narracao": {
+        "texto": "Sabia que a chuva começa no mar?",
+        "direcao": "curioso e encantado, como quem conta um segredo para uma criança, sobe no mar",
+        "em": 0.4
+      }
+    },
+    {
+      "cena": "vapor",
+      "dura": 4,
+      "entrada": "continua",
+      "visual": "raios do sol tocam a água; fios de vapor tremidos sobem em espiral, quase transparentes",
+      "narracao": {
+        "texto": "O sol esquenta a água... e ela sobe pelo ar, leve, invisível.",
+        "direcao": "maravilhado, voz flutuando e mais suave no leve, invisível",
+        "em": 0.4
+      }
+    },
+    {
+      "cena": "nuvem",
+      "dura": 4,
+      "entrada": "continua",
+      "visual": "o céu esfria (azul mais frio); o vapor vira pontinhos, os pontinhos se agrupam e a nuvem se desenha camada por camada",
+      "narracao": {
+        "texto": "Lá em cima faz frio. O vapor vira gotinhas... e as gotinhas viram nuvem.",
+        "direcao": "encantado, ênfase alegre em nuvem",
+        "em": 0.4
+      }
+    },
+    {
+      "cena": "peso",
+      "dura": 4,
+      "entrada": "mergulha",
+      "visual": "close dentro da nuvem: gotas se encostam e se fundem, crescem, a nuvem escurece e afunda um pouco",
+      "narracao": {
+        "texto": "Elas se juntam, crescem, ficam pesadas... pesadas...",
+        "direcao": "suspense: desacelera, mais baixo e misterioso, segura o último pesadas",
+        "em": 0.3
+      }
+    },
+    {
+      "cena": "chuva",
+      "dura": 4.5,
+      "entrada": "emerge",
+      "visual": "silêncio de um instante com a nuvem parada; então a chuva cai em traços inclinados até o mar, círculos na água, o sol volta e o ciclo fecha no mar do primeiro ato",
+      "narracao": {
+        "texto": "E de repente... caem todas. É chuva!",
+        "direcao": "revela com brilho na voz, sorriso aberto, explode de alegria no É chuva",
+        "em": 0.9
+      }
+    }
+  ]
+}
