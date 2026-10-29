@@ -74,6 +74,8 @@ def falar(body, destino):
     else:
         p = body["_p"]
         fmt = body.get("response_format", "mp3")
+        if p.get("clone") and fmt == "mp3":
+            fmt = "wav"  # voz clonada sem compressão: o mp3 piora o clone (o ffmpeg do decode lê pelo conteúdo)
         dados = {"text": body["input"], "format": fmt, "sample_rate": SR if fmt == "pcm" else 44100, "mp3_bitrate": 192}
         if p.get("clone"):  # clonagem instantânea: a amostra vai junto em cada pedido (grátis, sem criar modelo na conta)
             texto = (NUCLEO / p["clone_texto"]).read_text().strip() if p.get("clone_texto") else ""
