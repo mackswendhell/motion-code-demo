@@ -7,11 +7,11 @@ O elenco mora em nucleo/vozes.json e as amostras de clone em nucleo/referencias/
 
 import base64
 import json
+import struct
 import subprocess
 import sys
 import urllib.error
 import urllib.request
-import uuid
 from pathlib import Path
 
 import numpy as np
@@ -49,25 +49,18 @@ def pedir(url, dados, headers, quem, oque):
     sys.exit(f"{quem} recusou {oque!r}: {erro}")
 
 
-def clonar(p, k):
-    """Cria (uma vez) a voz clonada na conta do Fish e guarda o id ao lado da amostra."""
-    wav = NUCLEO / p["clone"]
-    guardado = wav.with_suffix(".fish-id")
-    if guardado.exists():
-        return guardado.read_text().strip()
-    b = uuid.uuid4().hex
-    campos = {"type": "tts", "title": p.get("nome", wav.stem), "train_mode": "fast", "visibility": "private"}
-    if p.get("clone_texto"):
-        campos["texts"] = (NUCLEO / p["clone_texto"]).read_text().strip()
-    partes = [f'--{b}\r\nContent-Disposition: form-data; name="{n}"\r\n\r\n{v}\r\n'.encode() for n, v in campos.items()]
-    partes.append(f'--{b}\r\nContent-Disposition: form-data; name="voices"; filename="{wav.name}"\r\n'
-                  f'Content-Type: audio/wav\r\n\r\n'.encode() + wav.read_bytes() + f"\r\n--{b}--\r\n".encode())
-    r = pedir("https://api.fish.audio/model", b"".join(partes),
-              {"Authorization": f"Bearer {k}", "Content-Type": f"multipart/form-data; boundary={b}"}, "Fish", wav.name)
-    id_ = json.loads(r)["_id"]
-    guardado.write_text(id_)
-    print(f"  voz clonada no Fish: {p.get('nome', wav.stem)} ({id_})")
-    return id_
+def msgpack(o):
+    """MessagePack mínimo: a API do Fish só aceita a amostra de clone em bytes nesse formato."""
+    if isinstance(o, int):
+        return struct.pack("B", o) if 0 <= o < 128 else b"\xd3" + struct.pack(">q", o)
+    if isinstance(o, str):
+        o = o.encode()
+        return b"\xdb" + struct.pack(">I", len(o)) + o
+    if isinstance(o, bytes):
+        return b"\xc6" + struct.pack(">I", len(o)) + o
+    if isinstance(o, list):
+        return b"\xdd" + struct.pack(">I", len(o)) + b"".join(map(msgpack, o))
+    return b"\xdf" + struct.pack(">I", len(o)) + b"".join(msgpack(k) + msgpack(v) for k, v in o.items())
 
 
 def falar(body, destino):
@@ -78,10 +71,16 @@ def falar(body, destino):
     else:
         p = body["_p"]
         fmt = body.get("response_format", "mp3")
-        dados = {"text": body["input"], "reference_id": clonar(p, k) if p.get("clone") else p["voz"],
-                 "format": fmt, "sample_rate": SR if fmt == "pcm" else 44100, "mp3_bitrate": 192}
-        r = pedir("https://api.fish.audio/v1/tts", json.dumps(dados).encode(),
-                  {"Authorization": f"Bearer {k}", "Content-Type": "application/json",
+        dados = {"text": body["input"], "format": fmt, "sample_rate": SR if fmt == "pcm" else 44100, "mp3_bitrate": 192}
+        if p.get("clone"):  # clonagem instantânea: a amostra vai junto em cada pedido (grátis, sem criar modelo na conta)
+            texto = (NUCLEO / p["clone_texto"]).read_text().strip() if p.get("clone_texto") else ""
+            dados["references"] = [{"audio": (NUCLEO / p["clone"]).read_bytes(), "text": texto}]
+            corpo_, tipo = msgpack(dados), "application/msgpack"
+        else:
+            dados["reference_id"] = p["voz"]
+            corpo_, tipo = json.dumps(dados).encode(), "application/json"
+        r = pedir("https://api.fish.audio/v1/tts", corpo_,
+                  {"Authorization": f"Bearer {k}", "Content-Type": tipo,
                    "model": env().get("FISH_MODEL", "").strip() or "s2.1-pro-free"}, "Fish", body["input"])
     destino.write_bytes(r)
 

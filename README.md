@@ -94,7 +94,7 @@ brew install python ffmpeg node && pip3 install numpy pillow
 Todas as vozes vêm do [Fish Audio](https://fish.audio), direto pela API (modelo `s2.1-pro-free`) ou pelo OpenRouter. O elenco fica em [`nucleo/vozes.json`](nucleo/vozes.json). Cada voz é de um destes dois tipos:
 
 - **Da biblioteca do Fish**: `"voz": "<id>"`. Funciona direto. Ache vozes em [fish.audio](https://fish.audio) e copie o id da página da voz.
-- **Clone**: `"clone": "referencias/<nome>.wav"` e `"clone_texto": "referencias/<nome>.txt"` (a transcrição exata da amostra). Na primeira fala, a voz é criada na sua conta do Fish e o id fica salvo ao lado da amostra (`.fish-id`). As amostras de clone **não vêm no repositório**: elas permitem clonar a voz de alguém. Clone só a sua voz, ou a de quem autorizou.
+- **Clone**: `"clone": "referencias/<nome>.wav"` e `"clone_texto": "referencias/<nome>.txt"` (a transcrição exata da amostra). A amostra vai junto em cada fala (clonagem instantânea), então funciona no modelo gratuito, sem criar nada na sua conta. As amostras de clone **não vêm no repositório**: elas permitem clonar a voz de alguém. Clone só a sua voz, ou a de quem autorizou.
 
 Os personagens `claude` (Contos com Claude) e `macks` (Narração) usam clone. Para usá-los, ou ponha a sua própria amostra (uns 15 a 30 s de fala limpa, mais o texto) em `nucleo/referencias/`, ou troque o par `clone`/`clone_texto` por um `"voz"` da biblioteca.
 
