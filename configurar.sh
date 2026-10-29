@@ -1,18 +1,18 @@
 #!/bin/zsh
-# Primeira vez: grava a chave do OpenRouter no .env (sem eco na tela) e instala o motor 2D.
+# Primeira vez: grava a chave do Fish Audio no .env (sem eco na tela) e instala o motor 2D.
 # Uso: ./configurar.sh
 set -e
 cd "${0:A:h}"
 
-if grep -q '^OPENROUTER_API_KEY=.\+' .env 2>/dev/null; then
+if grep -q '^\(FISH\|OPENROUTER\)_API_KEY=.\+' .env 2>/dev/null; then
   read -q "?Já existe uma chave no .env. Trocar? (s/N) " || { echo; SEM_CHAVE=1; }
   echo
 fi
 if [ -z "$SEM_CHAVE" ]; then
-  echo "Gere a chave em https://openrouter.ai/keys e cole aqui (não aparece na tela):"
+  echo "Gere a chave em https://fish.audio/app/developers e cole aqui (não aparece na tela):"
   read -rs CHAVE; echo
-  [[ "$CHAVE" == sk-or-* ]] || { echo "Isso não parece uma chave do OpenRouter (começa com sk-or-)."; exit 1; }
-  print -r -- "OPENROUTER_API_KEY=$CHAVE" > .env
+  [ -n "$CHAVE" ] || { echo "Nenhuma chave colada."; exit 1; }
+  print -r -- "FISH_API_KEY=$CHAVE" > .env
   chmod 600 .env
   echo "Chave gravada em .env (fica fora do git)."
 fi

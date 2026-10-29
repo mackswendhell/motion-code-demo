@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from nucleo.voz import NUCLEO, SR, corpo, decode, openrouter  # noqa: E402
+from nucleo.voz import NUCLEO, SR, corpo, decode, falar  # noqa: E402
 from roteiro import FPS, carregar  # noqa: E402
 
 def envelope(clip):
@@ -49,7 +49,7 @@ def main():
             if teste:
                 subprocess.run(["say", "-v", p["voz_teste"], "-o", str(destino), fala], check=True)
             else:
-                openrouter(corpo(cfg["modelo"], p, texto), destino)
+                falar(corpo(cfg["modelo"], p, texto), destino)
         clips[i] = decode(destino)
         if f.get("duracao"):  # alonga ou encurta para o tempo exato, sem mudar o tom
             fator = min(2.0, max(0.5, len(clips[i]) / SR / f["duracao"]))

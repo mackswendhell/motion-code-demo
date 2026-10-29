@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from nucleo.voz import NUCLEO, corpo, openrouter  # noqa: E402
+from nucleo.voz import NUCLEO, corpo, falar  # noqa: E402
 
 SR = 44100
 # direção por parte do vídeo, medida no vídeo do OpenClaw (ver CLAUDE.md): a abertura é a aprovada (B7)
@@ -150,7 +150,7 @@ def main():
             body = corpo(cfg["modelo"], voz, entrada)
             body["response_format"] = "pcm"  # sem compressão: o mp3 do Fish piora a voz clonada
             pcm = wav.with_suffix(".pcm")
-            openrouter(body, pcm)
+            falar(body, pcm)
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "s16le", "-ar", str(SR), "-ac", "1", "-i", str(pcm),
                             str(wav)], check=True)
             pcm.unlink()

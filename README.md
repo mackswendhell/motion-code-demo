@@ -47,8 +47,8 @@ Precisa de macOS (os scripts usam zsh e o Chrome em `/Applications`).
 **1. Baixar**
 
 ```sh
-git clone https://github.com/mackswendhell/motion-code.git
-cd motion-code
+git clone https://github.com/mackswendhell/motion-code-demo.git
+cd motion-code-demo
 ```
 
 **2. Pôr a sua chave e instalar o motor**
@@ -57,15 +57,15 @@ cd motion-code
 ./configurar.sh
 ```
 
-Ele pede a chave do [OpenRouter](https://openrouter.ai/keys), você cola e dá Enter. A chave não aparece na tela e vai direto para `.env`, que nunca sobe para o git. O script também confere o que falta instalar.
+Ele pede a chave da API do [Fish Audio](https://fish.audio/app/developers), você cola e dá Enter. A chave não aparece na tela e vai direto para `.env`, que nunca sobe para o git. O script também confere o que falta instalar.
 
 Prefere sem script? Uma linha faz o mesmo:
 
 ```sh
-read -rs "k?Chave do OpenRouter: " && echo "OPENROUTER_API_KEY=$k" > .env && chmod 600 .env
+read -rs "k?Chave do Fish Audio: " && echo "FISH_API_KEY=$k" > .env && chmod 600 .env
 ```
 
-A voz custa centavos por minuto. Vale pôr um limite de crédito na chave, no painel do OpenRouter.
+O modelo padrão é o `s2.1-pro-free`, gratuito na API do Fish (uso justo, por tempo limitado). Para outro modelo, ponha `FISH_MODEL=s2.1-pro` (ou `drama-3`) no `.env`. Já usa o OpenRouter? `OPENROUTER_API_KEY=` no lugar da chave do Fish também funciona.
 
 **3. Abrir no Claude Code e pedir**
 
@@ -91,10 +91,10 @@ brew install python ffmpeg node && pip3 install numpy pillow
 
 ## Vozes
 
-Todas as vozes vêm do [Fish Audio](https://fish.audio), pelo OpenRouter (modelo `fish-audio/drama-3`). O elenco fica em [`nucleo/vozes.json`](nucleo/vozes.json). Cada voz é de um destes dois tipos:
+Todas as vozes vêm do [Fish Audio](https://fish.audio), direto pela API (modelo `s2.1-pro-free`) ou pelo OpenRouter. O elenco fica em [`nucleo/vozes.json`](nucleo/vozes.json). Cada voz é de um destes dois tipos:
 
 - **Da biblioteca do Fish**: `"voz": "<id>"`. Funciona direto. Ache vozes em [fish.audio](https://fish.audio) e copie o id da página da voz.
-- **Clone**: `"clone": "referencias/<nome>.wav"` e `"clone_texto": "referencias/<nome>.txt"` (a transcrição exata da amostra). As amostras de clone **não vêm no repositório**: elas permitem clonar a voz de alguém.
+- **Clone**: `"clone": "referencias/<nome>.wav"` e `"clone_texto": "referencias/<nome>.txt"` (a transcrição exata da amostra). Na primeira fala, a voz é criada na sua conta do Fish e o id fica salvo ao lado da amostra (`.fish-id`). As amostras de clone **não vêm no repositório**: elas permitem clonar a voz de alguém. Clone só a sua voz, ou a de quem autorizou.
 
 Os personagens `claude` (Contos com Claude) e `macks` (Narração) usam clone. Para usá-los, ou ponha a sua própria amostra (uns 15 a 30 s de fala limpa, mais o texto) em `nucleo/referencias/`, ou troque o par `clone`/`clone_texto` por um `"voz"` da biblioteca.
 
@@ -107,6 +107,7 @@ Os personagens `claude` (Contos com Claude) e `macks` (Narração) usam clone. P
 | [Vila Acesa](estilos/vila-acesa/) | cidade em corte, ajudante luminoso em cada cômodo | 16:9, 1:1, 9:16 | Canvas 2D |
 | [Rabisco](estilos/rabisco/) | caneta e giz de cera, narrador em primeira pessoa | 9:16, 1:1, 16:9 | Canvas 2D |
 | [Fantasia](estilos/fantasia/) | lenda em vetor chapado, névoa, paralaxe | 9:16, 1:1, 16:9 | Canvas 2D |
+| [Aula](estilos/aula/) | abertura de aula sem rosto, tipografia cinética e voz clonada | 16:9 | Canvas 2D |
 | [Excel Desenhado](estilos/excel-desenhado/) | planilha desenhada à mão, cursor que clica e digita | 16:9 | Canvas 2D |
 | [Higgsfield](estilos/higgsfield/) | pinturas da Higgsfield animadas em código | 16:9 | Canvas 2D / Blender |
 | [Histórias Reais](estilos/historias-reais/) | depoimento real recontado em desenho infantil | o do vídeo de origem | Canvas 2D |

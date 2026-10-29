@@ -105,7 +105,7 @@ def main():
                 mp3 = audio / f"final{i:02d}_{tag}.mp3"
                 if not mp3.exists():
                     print(f"  narrando: {fr['texto']}")
-                    voz.openrouter(voz.corpo(cfg["modelo"], p, texto), mp3)
+                    voz.falar(voz.corpo(cfg["modelo"], p, texto), mp3)
                 clip = voz.decode(mp3)
                 clip = np.interp(np.arange(int(len(clip) * SR / voz.SR)) * voz.SR / SR, np.arange(len(clip)), clip).astype(np.float32)
                 clips.append((t, clip))

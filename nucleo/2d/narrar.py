@@ -42,13 +42,14 @@ def main():
             destino = audio / f"{i:02d}_{tag}.mp3"
             if not destino.exists():
                 print(f"  narrando {i:02d}: {n['texto']}")
-                voz.openrouter(voz.corpo(cfg["modelo"], p, texto), destino)
+                voz.falar(voz.corpo(cfg["modelo"], p, texto), destino)
             clip = voz.decode(destino)
             t0 = t + n.get("em", 0.4)
             clips.append((t0, clip))
             fala = dict(t0=round(t0, 3), t1=round(t0 + len(clip) / voz.SR, 3), texto=n["texto"])
         dura = max(a["dura"], (fala["t1"] - t + respiro) if fala else 0)
-        tempo["atos"].append(dict(cena=a["cena"], entrada=a.get("entrada"), t0=round(t, 3), t1=round(t + dura, 3), fala=fala))
+        tempo["atos"].append(dict(cena=a["cena"], entrada=a.get("entrada"), t0=round(t, 3), t1=round(t + dura, 3), fala=fala,
+                                   **({"tela": a["tela"]} if "tela" in a else {})))  # dados da cena para motores que desenham a partir do roteiro (Aula)
         t += dura
     tempo["total"] = round(t, 3)
     (pasta / "tempo.json").write_text(json.dumps(tempo, ensure_ascii=False, indent=1))

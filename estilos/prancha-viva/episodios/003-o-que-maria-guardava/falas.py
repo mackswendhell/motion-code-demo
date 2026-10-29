@@ -56,7 +56,7 @@ def main():
             destino = audio / f"{i:02d}-{k}_{tag}.mp3"
             if not destino.exists():
                 print(f"  {f['quem']} {i:02d}-{k}: {f['texto']}")
-                voz.openrouter(voz.corpo(MODELO, p, texto), destino)
+                voz.falar(voz.corpo(MODELO, p, texto), destino)
             clip = voz.decode(destino)
             t0 = cur + f.get("em", 0.4)
             falas.append(dict(quem=f["quem"], t0=round(t0, 3), t1=round(t0 + len(clip) / SR, 3), texto=f["texto"], boca=boca(clip, fps)))

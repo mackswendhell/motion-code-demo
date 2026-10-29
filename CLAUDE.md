@@ -2,13 +2,13 @@
 
 > Nome do estúdio a partir de 20/10/2026. A pasta se chama `~/dev/motion-code` (antes `~/dev/Histórias`). A skill `contador-de-historias` e a memória do Claude Code já apontam para o nome novo.
 
-Estúdio de vídeos animados feitos 100% em código, com voz por IA (Fish Audio via OpenRouter). Nada de editor de vídeo, nada de banco de imagens. A história é o produto; o motor só executa o que o roteiro decide.
+Estúdio de vídeos animados feitos 100% em código, com voz por IA (Fish Audio, direto pela API ou via OpenRouter). Nada de editor de vídeo, nada de banco de imagens. A história é o produto; o motor só executa o que o roteiro decide.
 
 Este arquivo só cuida do estúdio: o que é comum e como tudo se organiza. Cada estilo tem o seu `CLAUDE.md`, com tudo o que é dele.
 
 ## Começo de cada sessão
 
-Antes de tudo, conferir se o `.env` da raiz tem `OPENROUTER_API_KEY=` preenchida (sem imprimir o valor: `grep -q '^OPENROUTER_API_KEY=.' .env`). Se não tiver, parar e pedir para a pessoa rodar `./configurar.sh` no terminal (cola a chave, Enter; gerar em https://openrouter.ai/keys). Nunca pedir a chave no chat.
+Antes de tudo, conferir se o `.env` da raiz tem `FISH_API_KEY=` (ou `OPENROUTER_API_KEY=`) preenchida, sem imprimir o valor: `grep -q '^\(FISH\|OPENROUTER\)_API_KEY=.' .env`. Se não tiver, parar e pedir para a pessoa rodar `./configurar.sh` no terminal (cola a chave, Enter; gerar em https://fish.audio/app/developers). Nunca pedir a chave no chat.
 
 Dois termos, sempre separados:
 - **Estilo** é a linha editorial completa: estrutura narrativa, visual, motor, voz, música e instruções. Cada estilo é uma pasta em `estilos/`.
@@ -32,6 +32,7 @@ Se o Macks não disser no pedido, perguntar com **AskUserQuestion** (uma chamada
 | **Histórias Reais** | vídeo real de depoimentos recontado em desenho de livro infantil em código, com as vozes originais (separadas da trilha) e trilha emocional em código | o do vídeo de origem (001: 9:16) | `estilos/historias-reais/` | 001 (Nordeste) renderizado em teste, aguardando o Macks ver |
 | **Fantasia** | lenda de fantasia em ilustração vetorial chapada com grão, raios de luz, névoa e profundidade de campo (paralaxe + desfoque), narradora de voz antiga e serena, trilha de lenda em código | 9:16, 1:1 e 16:9 | `estilos/fantasia/` | estilo aprovado; 001 (O Anel) entregue e aprovado em 9:16, 1:1 e 16:9 (65,8 s); skill `contador-de-lendas` |
 | **Editor 3D** (provisório) | o Claude em 3D pulando dentro de um editor de vídeo que vira objeto físico (o RecMove), cada elemento da interface ganha vida e som quando ele pisa | só 16:9 | `estilos/editor-3d/` | ambiente preparado (referência analisada, print medido); 001 ainda não começou |
+| **Aula** | abertura de aula para canal sem rosto: tipografia cinética, janela de app, lista, contador, legenda palavra por palavra, cortes em chicote com som; feita para voz clonada | 16:9 (9:16 e 1:1 a validar) | `estilos/aula/` | motor pronto (000-teste, 29/10/2026) |
 | **Lofi** | cena 3D aconchegante em loop, sem fala, trilha lofi em código (textura do vídeo do piano, Blender) | só 16:9 | `estilos/lofi/` | 4 entregues e aprovados (001 a 004); falta a skill |
 
 O estado detalhado de cada episódio fica na tabela do `CLAUDE.md` do estilo. Ao mudar um episódio de etapa, atualizar lá e, se mudar o resumo, a coluna "Estado" acima.
@@ -43,9 +44,9 @@ A raiz tem sempre as mesmas cinco coisas, não importa quantos estilos existam:
 ```
 motion-code/
   CLAUDE.md          este arquivo: o estúdio
-  .env               OPENROUTER_API_KEY (nunca imprimir, nunca commitar)
+  .env               FISH_API_KEY ou OPENROUTER_API_KEY (nunca imprimir, nunca commitar)
   nucleo/            o que mais de um estilo usa
-    voz.py           chave, chamada ao Fish pelo OpenRouter, decodificação
+    voz.py           chave, chamada ao Fish (direto ou pelo OpenRouter), decodificação
     vozes.json       o elenco de todas as vozes de todos os estilos
     referencias/     amostras de voz para clonagem (River, Seed, Macks)
     trilha.py        gerador de música de fundo (estilos noite, contos, vila)
@@ -78,8 +79,8 @@ Regras:
 
 ## Núcleo comum (`nucleo/`)
 
-- `voz.py`: `openrouter()`, `corpo()` (voz da biblioteca ou clone), `decode()` (corta o silêncio das pontas), `SR`, `NUCLEO` (esta pasta) e `RAIZ` (a raiz, onde fica o `.env`). Os estilos importam com a raiz no `sys.path`: `from nucleo import voz` ou `from nucleo.voz import ...`.
-  - Todas as vozes são do Fish Audio; o OpenRouter é só o intermediário. Ideia para depois: aceitar também a chave direta do Fish. A troca é só no `voz.py` (endereço e campos da API do Fish); antes, conferir na documentação do Fish se a API direta tem o `drama-3` (ou equivalente que entenda a direção entre colchetes) e o preço.
+- `voz.py`: `falar()`, `corpo()` (voz da biblioteca ou clone), `decode()` (corta o silêncio das pontas), `SR`, `NUCLEO` (esta pasta) e `RAIZ` (a raiz, onde fica o `.env`). Os estilos importam com a raiz no `sys.path`: `from nucleo import voz` ou `from nucleo.voz import ...`.
+  - Todas as vozes são do Fish Audio. Com `FISH_API_KEY`, o `falar()` chama `api.fish.audio/v1/tts` com o modelo `FISH_MODEL` do `.env` (padrão `s2.1-pro-free`, grátis); com `OPENROUTER_API_KEY`, vai pelo OpenRouter com o `modelo` do `vozes.json`. Clone no Fish direto: na primeira fala o `clonar()` cria a voz na conta (`POST /model`) e guarda o id em `referencias/<nome>.fish-id`; apagar esse arquivo recria a voz.
 - `vozes.json`: modelo `fish-audio/drama-3`; `personagens` (usuario, claude, narrador, narradora, macks) e `alternativas` (claude-seed, usuario-macks). Cada voz tem `voz` (id da biblioteca do Fish) ou `clone`/`clone_texto` (amostra em `nucleo/referencias/`) e uma `direcao_base`.
 - `trilha.py`: `python3 ../../nucleo/trilha.py saida.wav --minutos 1.2 --estilo contos|noite|vila --seed 3`.
 - `lofi.py`: `python3 ../../nucleo/lofi.py saida.wav --faixa estudo|piano|madrugada [--voltas 2]`. Grava UM loop de N compassos que emenda sem corte (tudo circular); `--voltas 2` para ouvir a emenda. Separado do `trilha.py` porque o contrato é outro: duração presa a compassos e bateria.
@@ -106,7 +107,7 @@ Publicado em 29/10/2026 (github.com/mackswendhell/motion-code). O `.gitignore` d
 - Depois do `git init`, conferir com `git status` (e `git ls-files` antes do primeiro push) que `.env` não aparece.
 - Procurar a chave fora do `.env` antes de publicar (ela começa com `sk-or-`), sem imprimir o valor. Em 20/10/2026 não estava em nenhum outro arquivo.
 - Se a chave subir num commit por engano, apagar o arquivo não basta (fica no histórico): revogar no OpenRouter e gerar outra.
-- Criar um `.env.example` só com `OPENROUTER_API_KEY=` para quem baixar.
+- O `.env.example` traz só os nomes das chaves (`FISH_API_KEY=`), nunca valor.
 - **Clones de voz:** `nucleo/referencias/macks*` (`macks.*` e `macks-abertura.*`) é a voz do Macks e permite cloná-la. Perguntar se vai a público; o padrão é pôr `nucleo/referencias/macks*` no `.gitignore`. Os outros clones (River, Seed) também merecem a pergunta.
 - **Referências pesadas:** `estilos/rabisco/referencia/` tem os 1141 quadros do vídeo de referência (1,3 GB) e o vídeo original, que não é nosso. Pôr `estilos/*/referencia/` no `.gitignore`.
 - Sugerir ao Macks um limite de crédito na chave no OpenRouter, para limitar o estrago se ela vazar.

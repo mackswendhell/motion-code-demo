@@ -111,7 +111,7 @@ def request(a, idx, f, text):
         print(f'Gerando {a["id"]} · {f["quem"]} · {len(text.split())} palavras',flush=True)
         temp=path.with_suffix('.recebendo')
         try:
-            voz.openrouter(body,temp)
+            voz.falar(body,temp)
             if temp.stat().st_size<500:raise RuntimeError('Resposta de áudio vazia')
             # Validar o áudio antes de incorporá-lo ao cache.
             voice=voz.decode(temp)

@@ -1,0 +1,103 @@
+{
+ "titulo": "Teste do motor",
+ "estilo": "aula",
+ "formato": "16:9",
+ "fps": 24,
+ "voz": "narrador",
+ "tema": "teste das cenas da Aula",
+ "atos": [
+  {
+   "cena": "titulo",
+   "dura": 3.5,
+   "narracao": {
+    "texto": "O Claude Code ganhou cara nova.",
+    "direcao": "professor animado, ritmo vivo, sorrindo",
+    "em": 0.4
+   },
+   "tela": {
+    "selo": "AULA 01",
+    "texto": "Claude Code 2.0",
+    "destaque": "2.0",
+    "sub": "o que mudou no app"
+   }
+  },
+  {
+   "cena": "frase",
+   "dura": 3.5,
+   "narracao": {
+    "texto": "A interface ficou bem mais organizada.",
+    "direcao": "professor animado, ritmo vivo, sorrindo",
+    "em": 0.4
+   },
+   "tela": {
+    "texto": "A interface ficou bem mais organizada",
+    "destaque": [
+     "organizada"
+    ]
+   }
+  },
+  {
+   "cena": "janela",
+   "dura": 4.5,
+   "narracao": {
+    "texto": "Do lado do chat agora tem cartões de ambiente e de contexto.",
+    "direcao": "professor animado, ritmo vivo, sorrindo",
+    "em": 0.4
+   },
+   "tela": {
+    "titulo": "Claude Code",
+    "lateral": [
+     "Projetos",
+     "  Canal",
+     "  Clientes",
+     "Conversas"
+    ],
+    "chat": [
+     "Resume o relatório do cliente",
+     "Pronto. Os três pontos principais estão abaixo."
+    ],
+    "cartoes": [
+     {
+      "titulo": "Ambiente",
+      "texto": "~/projetos/canal · local"
+     },
+     {
+      "titulo": "Contexto",
+      "texto": "42% da janela usada",
+      "barra": 0.42
+     }
+    ],
+    "foco": "cartoes",
+    "focoEm": 2.2
+   }
+  },
+  {
+   "cena": "lista",
+   "dura": 3.5,
+   "narracao": {
+    "texto": "Projetos, threads, seções e tela dividida.",
+    "direcao": "professor animado, ritmo vivo, sorrindo",
+    "em": 0.4
+   },
+   "tela": {
+    "titulo": "Novidades",
+    "itens": [
+     "Projetos",
+     "Threads",
+     "Seções",
+     "Tela dividida"
+    ],
+    "passo": 0.6
+   }
+  },
+  {
+   "cena": "fim",
+   "dura": 2,
+   "entrada": "flash",
+   "tela": {
+    "texto": "Bora ver cada uma",
+    "destaque": "cada uma"
+   }
+  }
+ ]
+}
