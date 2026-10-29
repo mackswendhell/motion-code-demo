@@ -69,7 +69,12 @@ const CENAS = {
   frase(d, u, fim, a) { // a frase da tela entra palavra por palavra no ritmo da fala; destaques ganham marca-texto
     const px = d.tamanho || 96, linhas = quebrar(d.texto, 1500, px, 800), alt = px * 1.22;
     const tempos = palavrasNoTempo(a.fala), dest = new Set((d.destaque || []).map(limpa));
-    const ritmo = (p, i) => { const achou = tempos.find((w) => limpa(w.p) === limpa(p)); return achou ? achou.t - a.t0 : 0.2 + i * 0.12; };
+    let prox = 0; // casa as palavras da tela com as da fala em ordem, para palavra repetida ("o", "de") não pular para a primeira vez
+    const ritmo = (p, i) => {
+      const k = tempos.findIndex((w, j) => j >= prox && limpa(w.p) === limpa(p));
+      if (k < 0) return 0.2 + i * 0.12;
+      prox = k + 1; return tempos[k].t - a.t0;
+    };
     let n = 0, y = 540 - ((linhas.length - 1) * alt) / 2;
     ctx.font = fonte(px, 800); ctx.textBaseline = "middle";
     for (const l of linhas) {

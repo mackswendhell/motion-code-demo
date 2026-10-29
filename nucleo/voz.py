@@ -6,6 +6,7 @@ O elenco mora em nucleo/vozes.json e as amostras de clone em nucleo/referencias/
 """
 
 import base64
+import http.client
 import json
 import struct
 import subprocess
@@ -46,6 +47,8 @@ def pedir(url, dados, headers, quem, oque):
             erro = f"{e.code} {e.read().decode()[:300]}"
             if e.code < 500:
                 break
+        except http.client.IncompleteRead as e:  # o Fish às vezes corta o áudio no meio da transmissão
+            erro = f"resposta cortada ({len(e.partial)} bytes)"
     sys.exit(f"{quem} recusou {oque!r}: {erro}")
 
 

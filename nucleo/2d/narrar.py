@@ -54,7 +54,7 @@ def main():
     tempo["total"] = round(t, 3)
     (pasta / "tempo.json").write_text(json.dumps(tempo, ensure_ascii=False, indent=1))
 
-    mix = np.zeros(int(t * voz.SR) + voz.SR, dtype=np.float32)
+    mix = np.random.default_rng(1).normal(0, 3e-4, int(t * voz.SR) + voz.SR).astype(np.float32)  # fundo baixíssimo: nunca silêncio digital entre as falas
     for t0, clip in clips:
         a = int(t0 * voz.SR)
         mix[a:a + len(clip)] += clip
