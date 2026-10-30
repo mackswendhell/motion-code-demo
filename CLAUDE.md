@@ -8,7 +8,7 @@ Este arquivo só cuida do estúdio: o que é comum e como tudo se organiza. Cada
 
 ## Começo de cada sessão
 
-Antes de tudo, conferir se o `.env` da raiz tem `FISH_API_KEY=` (ou `OPENROUTER_API_KEY=`) preenchida, sem imprimir o valor: `grep -q '^\(FISH\|OPENROUTER\)_API_KEY=.' .env`. Se não tiver, parar e pedir para a pessoa rodar `./configurar.sh` no terminal (cola a chave, Enter; gerar em https://fish.audio/app/developers). Nunca pedir a chave no chat.
+Antes de tudo (menos no estilo Edição, que não usa voz), conferir se o `.env` da raiz tem `FISH_API_KEY=` (ou `OPENROUTER_API_KEY=`) preenchida, sem imprimir o valor: `grep -q '^\(FISH\|OPENROUTER\)_API_KEY=.' .env`. Se não tiver, parar e pedir para a pessoa rodar `./configurar.sh` no terminal (cola a chave, Enter; gerar em https://fish.audio/app/developers). Nunca pedir a chave no chat.
 
 Dois termos, sempre separados:
 - **Estilo** é a linha editorial completa: estrutura narrativa, visual, motor, voz, música e instruções. Cada estilo é uma pasta em `estilos/`.
@@ -34,6 +34,7 @@ Se o Macks não disser no pedido, perguntar com **AskUserQuestion** (uma chamada
 | **Editor 3D** (provisório) | o Claude em 3D pulando dentro de um editor de vídeo que vira objeto físico (o RecMove), cada elemento da interface ganha vida e som quando ele pisa | só 16:9 | `estilos/editor-3d/` | ambiente preparado (referência analisada, print medido); 001 ainda não começou |
 | **Recorte** | papel recortado nas cores do Claude sobre fundo creme, montado por cima de uma narração pronta: cartões que caem e voam, prints com fita, números contando, legenda palavra por palavra | 16:9 | `estilos/recorte/` | 001 (abertura do Ponytail 5) entregue |
 | **Aula** | abertura de aula para canal sem rosto: tipografia cinética, janela de app, lista, contador, legenda palavra por palavra, cortes em chicote com som; feita para voz clonada | 16:9 (9:16 e 1:1 a validar) | `estilos/aula/` | motor pronto (000-teste, 29/10/2026); 001 (Claude Code 2.0) entregue em 16:9, aguardando ver |
+| **Edição** | edita um vídeo gravado: câmera em card ou tela dividida, prints com zoom e marca-texto, legendas, cartelas e o app reconstruído (Demo Tutorial), em Remotion; não usa voz | 16:9, 9:16 e 1:1 | `estilos/edicao/` | motor e galeria prontos; guias em `estilos/edicao/guias/` |
 | **Lofi** | cena 3D aconchegante em loop, sem fala, trilha lofi em código (textura do vídeo do piano, Blender) | só 16:9 | `estilos/lofi/` | 4 entregues e aprovados (001 a 004); falta a skill |
 
 O estado detalhado de cada episódio fica na tabela do `CLAUDE.md` do estilo. Ao mudar um episódio de etapa, atualizar lá e, se mudar o resumo, a coluna "Estado" acima.

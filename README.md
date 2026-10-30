@@ -109,6 +109,7 @@ Os personagens `claude` (Contos com Claude) e `macks` (Narração) usam clone. P
 | [Fantasia](estilos/fantasia/) | lenda em vetor chapado, névoa, paralaxe | 9:16, 1:1, 16:9 | Canvas 2D |
 | [Recorte](estilos/recorte/) | papel recortado nas cores do Claude, por cima de uma narração pronta | 16:9 | Canvas 2D |
 | [Aula](estilos/aula/) | abertura de aula sem rosto, tipografia cinética e voz clonada | 16:9 | Canvas 2D |
+| [Edição](estilos/edicao/) | edita um vídeo que você gravou: câmera em card, tela dividida, prints com zoom, legendas e o app reconstruído | 16:9, 9:16, 1:1 | Remotion |
 | [Excel Desenhado](estilos/excel-desenhado/) | planilha desenhada à mão, cursor que clica e digita | 16:9 | Canvas 2D |
 | [Higgsfield](estilos/higgsfield/) | pinturas da Higgsfield animadas em código | 16:9 | Canvas 2D / Blender |
 | [Histórias Reais](estilos/historias-reais/) | depoimento real recontado em desenho infantil | o do vídeo de origem | Canvas 2D |

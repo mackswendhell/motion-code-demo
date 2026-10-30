@@ -1,0 +1,24 @@
+{
+  "name": "motion-code-edicao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Estilo Edição do Motion Code: edita um vídeo gravado com Claude Code e Remotion (gratuito).",
+  "scripts": {
+    "instalar": "node scripts/instalar.mjs",
+    "studio": "remotion studio src/index.ts",
+    "compositions": "remotion compositions src/index.ts",
+    "typecheck": "tsc --noEmit && node scripts/check-split-layouts.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.451",
+    "@remotion/media": "4.0.451",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "remotion": "4.0.451"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
+}

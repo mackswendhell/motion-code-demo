@@ -34,3 +34,11 @@ __pycache__/
 *.log
 *.lock
 .DS_Store
+
+# estilo Edição: vídeos e entregas da pessoa ficam fora; galeria e som da cartela entram
+estilos/edicao/projetos/*
+estilos/edicao/edicoes/*
+!estilos/edicao/projetos/.gitkeep
+!estilos/edicao/edicoes/.gitkeep
+!estilos/edicao/galeria/imagens/*.jpg
+!estilos/edicao/src/estilos/demo-tutorial/sons/*.m4a
